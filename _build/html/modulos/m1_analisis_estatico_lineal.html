@@ -1,0 +1,3230 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Módulo 1. Análisis Estático Lineal &#8212; Análisis Avanzado de Estructuras</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modulos/m1_analisis_estatico_lineal';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Content with notebooks" href="../notebooks.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Análisis Avanzado de Estructuras - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Análisis Avanzado de Estructuras - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Módulo 1. Análisis Estático Lineal</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmodulos/m1_analisis_estatico_lineal.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/modulos/m1_analisis_estatico_lineal.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Módulo 1. Análisis Estático Lineal</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Módulo 1. Análisis Estático Lineal</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-de-entrada">Parámetros de entrada</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#procedimiento">Procedimiento</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-librerias">Importación de librerias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-lectura-de-informacion-inicial">Paso 1. Lectura de información inicial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-matriz-de-rigidez-de-los-elementos">Paso 2. Matriz de rigidez de los elementos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-matriz-de-rigidez-de-la-estructura">Paso 3. Matriz de rigidez de la estructura</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-vector-de-fuerzas">Paso 4. Vector de fuerzas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-5-vector-de-desplazamientos">Paso 5. Vector de desplazamientos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-6-vector-de-fuerzas-internas-de-los-elementos">Paso 6. Vector de fuerzas internas de los elementos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-7-reacciones">Paso 7. Reacciones</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#verificacion-sap2000">Verificación SAP2000</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reacciones">Reacciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuerzas-internas-elemento-1">Fuerzas internas elemento 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuerzas-internas-elemento-2">Fuerzas internas elemento 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuerzas-internas-elemento-3">Fuerzas internas elemento 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuerzas-internas-elemento-4">Fuerzas internas elemento 4</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modulo-1-analisis-estatico-lineal">
+<h1>Módulo 1. Análisis Estático Lineal<a class="headerlink" href="#modulo-1-analisis-estatico-lineal" title="Link to this heading">#</a></h1>
+<p>A continuación, se mostrará el paso a paso del análisis estático lineal. Inicialmente, es importante tener un documento de Excel de entrada con las siguiente información:</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="parametros-de-entrada">
+<h1>Parámetros de entrada<a class="headerlink" href="#parametros-de-entrada" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Información de la estructura</p>
+<ul class="simple">
+<li><p>Número de elementos.</p></li>
+<li><p>Número de nodos.</p></li>
+<li><p>Grados de libertad totales.</p></li>
+<li><p>Grados de libertad libres.</p></li>
+<li><p>Grados restringidos.</p></li>
+</ul>
+</li>
+<li><p>Elementos</p>
+<ul class="simple">
+<li><p>Id.</p></li>
+<li><p>Longitud.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta\)</span> - ángulo del elemento con respecto a las coordenadas globales.</p></li>
+<li><p>Módulo de elasticidad.</p></li>
+<li><p>Área.</p></li>
+<li><p>Segundo momento de área.</p></li>
+<li><p>Tipo de elemento.</p></li>
+</ul>
+</li>
+<li><p>Grados de libertad</p>
+<ul class="simple">
+<li><p>Por elemento, definir los grados de liberdad del nodo inicial y  nodo final del elemento.</p></li>
+</ul>
+</li>
+<li><p>Vector de fuerzas puntuales <span class="math notranslate nohighlight">\((F_{n})\)</span> en los nodos.</p></li>
+<li><p>Desplazamientos iniciales en los grados de libertad restringidos.</p></li>
+<li><p>Cargas en los elementos</p>
+<ul class="simple">
+<li><p>id elemento</p></li>
+<li><p>Fuerza distribuida en las direcciones <span class="math notranslate nohighlight">\(x\)</span> y <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p>Fuerzas puntuales en el centro del elemento tanto en las direcciones <span class="math notranslate nohighlight">\(x\)</span> y <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p>Fuerzas puntuales en los terciones del elemento tanto en las direcciones <span class="math notranslate nohighlight">\(x\)</span> y <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p>Fuerzas debido a efectos de temperatura</p></li>
+<li><p>Fuerzas debido a efectos de preesfuerzo</p></li>
+</ul>
+</li>
+<li><p>Información de resortes</p>
+<ul class="simple">
+<li><p>Grado de libertad donde se encuentra el resorte.</p></li>
+<li><p>Rigidez que aporta el resorte.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="procedimiento">
+<h1>Procedimiento<a class="headerlink" href="#procedimiento" title="Link to this heading">#</a></h1>
+<p>Se realizará el proceso de análisis estático lineal a la siguiente estructura:</p>
+<p><img alt="ejemplo" src="../_images/Ej1.png" /></p>
+<section id="importacion-de-librerias">
+<h2>Importación de librerias<a class="headerlink" href="#importacion-de-librerias" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##%% Importación de librerías y funciones creadas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                           <span class="c1"># Librería matricial</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                          <span class="c1"># Librería manipulación de datos</span>
+<span class="kn">from</span> <span class="nn">funciones.funciones</span> <span class="kn">import</span> <span class="o">*</span>            <span class="c1"># Módulo creado con las funciones</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="paso-1-lectura-de-informacion-inicial">
+<h2>Paso 1. Lectura de información inicial<a class="headerlink" href="#paso-1-lectura-de-informacion-inicial" title="Link to this heading">#</a></h2>
+<p>Se realiza la lectura del archivo de Excel de entrada con la información señalada previamente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definir una función de formato personalizado para la impresión de datos en consola (NO ES NECESARIO COPIAR)</span>
+<span class="k">def</span> <span class="nf">formato_personalizado</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>  <span class="c1"># Manejar NaN</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="n">x</span><span class="p">:</span>  <span class="c1"># Si el número es entero</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{:.0f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># Si el número tiene decimales</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{:.7f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># Puedes ajustar el número de decimales aquí</span>
+
+<span class="c1"># Aplicar la función a todo el DataFrame</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="n">formato_personalizado</span>
+
+<span class="c1"># Copiar desde acá</span>
+<span class="c1"># Nombre del Excel de entrada</span>
+<span class="n">path_excel</span> <span class="o">=</span> <span class="s1">&#39;estructuras/Entrada2.xlsx&#39;</span>
+
+<span class="c1"># Información estructural </span>
+<span class="n">informacion_estructural</span> <span class="o">=</span> <span class="n">lectura_informacion</span><span class="p">(</span><span class="n">path_excel</span><span class="o">=</span><span class="n">path_excel</span><span class="p">)</span>
+<span class="n">display</span><span class="p">([</span><span class="o">*</span><span class="n">informacion_estructural</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+
+<span class="c1"># información general de la estructura</span>
+<span class="n">informacion_general</span> <span class="o">=</span> <span class="n">informacion_estructural</span><span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">]</span>
+
+<span class="c1"># Loop para mirar los dataframes</span>
+<span class="k">for</span> <span class="n">hoja</span> <span class="ow">in</span> <span class="n">informacion_estructural</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; - Hoja </span><span class="si">{</span><span class="n">hoja</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">informacion_estructural</span><span class="p">[</span><span class="n">hoja</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;I&#39;, &#39;E&#39;, &#39;GDL&#39;, &#39;Fn&#39;, &#39;Ur&#39;, &#39;C&#39;, &#39;R&#39;]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> - Hoja I
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Dato</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Elementos</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Nodos</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>GdLs</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>GdLLs</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>GdLRs</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> - Hoja E
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Elemento</th>
+      <th>L</th>
+      <th>An</th>
+      <th>E</th>
+      <th>I</th>
+      <th>A</th>
+      <th>T</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>3</td>
+      <td>90</td>
+      <td>1</td>
+      <td>9600</td>
+      <td>2400000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>3</td>
+      <td>90</td>
+      <td>1</td>
+      <td>9600</td>
+      <td>2400000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9600</td>
+      <td>2400000</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>5</td>
+      <td>36.8698976</td>
+      <td>1</td>
+      <td>9600</td>
+      <td>200000</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> - Hoja GDL
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Elemento</th>
+      <th>x_i</th>
+      <th>y_i</th>
+      <th>z_i</th>
+      <th>x_j</th>
+      <th>y_j</th>
+      <th>z_j</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>9</td>
+      <td>10</td>
+      <td>7</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>11</td>
+      <td>12</td>
+      <td>8</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>9</td>
+      <td>10</td>
+      <td>7</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> - Hoja Fn
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GdL</th>
+      <th>Fn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>700</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> - Hoja Ur
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GdL</th>
+      <th>Ur</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>12</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> - Hoja C
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Elemento</th>
+      <th>wx</th>
+      <th>wy</th>
+      <th>f</th>
+      <th>x</th>
+      <th>eps_0</th>
+      <th>phi_0</th>
+      <th>q_01</th>
+      <th>fo</th>
+      <th>e1</th>
+      <th>e2</th>
+      <th>e3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0</td>
+      <td>60</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> - Hoja R
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GdL</th>
+      <th>Kr</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="paso-2-matriz-de-rigidez-de-los-elementos">
+<h2>Paso 2. Matriz de rigidez de los elementos<a class="headerlink" href="#paso-2-matriz-de-rigidez-de-los-elementos" title="Link to this heading">#</a></h2>
+<p>A partir del resumen proporcionado en clase</p>
+<p><img alt="ke" src="../_images/ke.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Información de los elementos </span>
+<span class="n">elementos</span> <span class="o">=</span> <span class="n">informacion_estructural</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
+
+<span class="n">Ke_matrices</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">matrices_lambda</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">elemento</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">elementos</span><span class="p">)):</span>
+    <span class="c1"># Extrae todos la información del elemento</span>
+    <span class="n">informacion_elemento</span> <span class="o">=</span> <span class="n">elementos</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">elemento</span><span class="p">,:]</span>
+
+    <span class="c1"># Cálculo de matriz de rigidez elemento</span>
+    <span class="n">Ke_matrices</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ke</span><span class="p">(</span><span class="n">elementoTemporal</span><span class="o">=</span><span class="n">informacion_elemento</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Matriz de rigidez elemento </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">elemento</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Ke_matrices</span><span class="p">[</span><span class="n">elemento</span><span class="p">]))</span>
+
+    <span class="c1"># Cálculo matriz lambda</span>
+    <span class="n">matrices_lambda</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span> <span class="o">=</span> <span class="n">matriz_lambda</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="n">informacion_elemento</span><span class="p">[</span><span class="s1">&#39;An&#39;</span><span class="p">])</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Matriz de transformación lambda elemento </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">elemento</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">matrices_lambda</span><span class="p">[</span><span class="n">elemento</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz de rigidez elemento 0
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4266.6666667</td>
+      <td>0.0000000</td>
+      <td>-6400</td>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+      <td>-6400</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0000000</td>
+      <td>800000</td>
+      <td>0.0000000</td>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+      <td>0.0000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-6400</td>
+      <td>0.0000000</td>
+      <td>12800</td>
+      <td>6400</td>
+      <td>-0.0000000</td>
+      <td>6400</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+      <td>6400</td>
+      <td>4266.6666667</td>
+      <td>0.0000000</td>
+      <td>6400</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+      <td>-0.0000000</td>
+      <td>0.0000000</td>
+      <td>800000</td>
+      <td>-0.0000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-6400</td>
+      <td>0.0000000</td>
+      <td>6400</td>
+      <td>6400</td>
+      <td>-0.0000000</td>
+      <td>12800</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz de transformación lambda elemento 0
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1</td>
+      <td>0.0000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0000000</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>0.0000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz de rigidez elemento 1
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4266.6666667</td>
+      <td>0.0000000</td>
+      <td>-6400</td>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+      <td>-6400</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0000000</td>
+      <td>800000</td>
+      <td>0.0000000</td>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+      <td>0.0000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-6400</td>
+      <td>0.0000000</td>
+      <td>12800</td>
+      <td>6400</td>
+      <td>-0.0000000</td>
+      <td>6400</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+      <td>6400</td>
+      <td>4266.6666667</td>
+      <td>0.0000000</td>
+      <td>6400</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+      <td>-0.0000000</td>
+      <td>0.0000000</td>
+      <td>800000</td>
+      <td>-0.0000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-6400</td>
+      <td>0.0000000</td>
+      <td>6400</td>
+      <td>6400</td>
+      <td>-0.0000000</td>
+      <td>12800</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz de transformación lambda elemento 1
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1</td>
+      <td>0.0000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0000000</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>0.0000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz de rigidez elemento 2
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>600000</td>
+      <td>0</td>
+      <td>-0</td>
+      <td>-600000</td>
+      <td>-0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>450</td>
+      <td>1800</td>
+      <td>-0</td>
+      <td>-450</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0</td>
+      <td>1800</td>
+      <td>7200</td>
+      <td>0</td>
+      <td>-1800</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-600000</td>
+      <td>-0</td>
+      <td>0</td>
+      <td>600000</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0</td>
+      <td>-450</td>
+      <td>-1800</td>
+      <td>0</td>
+      <td>450</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz de transformación lambda elemento 2
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz de rigidez elemento 3
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>25600.0000000</td>
+      <td>19200</td>
+      <td>0</td>
+      <td>-25600.0000000</td>
+      <td>-19200</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>19200</td>
+      <td>14400</td>
+      <td>0</td>
+      <td>-19200</td>
+      <td>-14400</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-25600.0000000</td>
+      <td>-19200</td>
+      <td>0</td>
+      <td>25600.0000000</td>
+      <td>19200</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-19200</td>
+      <td>-14400</td>
+      <td>0</td>
+      <td>19200</td>
+      <td>14400</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz de transformación lambda elemento 3
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.8000000</td>
+      <td>0.6000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.6000000</td>
+      <td>0.8000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.8000000</td>
+      <td>0.6000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-0.6000000</td>
+      <td>0.8000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="paso-3-matriz-de-rigidez-de-la-estructura">
+<h2>Paso 3. Matriz de rigidez de la estructura<a class="headerlink" href="#paso-3-matriz-de-rigidez-de-la-estructura" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -----------------------------------------------------------------------------------------------</span>
+<span class="c1"># TODO Paso 3. Matriz de rigidez de la estructura</span>
+<span class="c1"># -----------------------------------------------------------------------------------------------</span>
+<span class="c1"># Número de nodos</span>
+<span class="n">numero_nodos</span> <span class="o">=</span> <span class="n">informacion_estructural</span><span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Valor&#39;</span><span class="p">]</span>
+
+<span class="c1"># Inicialización matriz de rigidez</span>
+<span class="n">matriz_rigidez_estructura</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">numero_nodos</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="n">numero_nodos</span><span class="o">*</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># Grados de libertad elemento</span>
+<span class="n">GdLs</span> <span class="o">=</span> <span class="n">informacion_estructural</span><span class="p">[</span><span class="s1">&#39;GDL&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">elemento</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">elementos</span><span class="p">)):</span>
+    <span class="c1"># Extrae todos la información del elemento</span>
+    <span class="n">grados_libertad_elemento</span> <span class="o">=</span> <span class="n">GdLs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">elemento</span><span class="p">,:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">grados_libertad_elemento</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">grados_libertad_elemento</span> <span class="p">]</span>
+
+    <span class="c1"># Formación matriz de rigidez de la estructura a partir de las rigideces de los elementos</span>
+    <span class="n">matriz_rigidez_estructura</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">grados_libertad_elemento</span><span class="p">,</span> <span class="n">grados_libertad_elemento</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">Ke_matrices</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span>
+
+<span class="c1"># Información de resortes</span>
+<span class="n">resortes</span> <span class="o">=</span> <span class="n">informacion_estructural</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">resortes</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">resorte</span> <span class="ow">in</span> <span class="n">resortes</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="n">gdl_resorte</span> <span class="o">=</span> <span class="n">resortes</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">resorte</span><span class="p">,</span><span class="s1">&#39;GdL&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">matriz_rigidez_estructura</span><span class="p">[</span><span class="n">gdl_resorte</span><span class="p">,</span><span class="n">gdl_resorte</span><span class="p">]</span> <span class="o">+=</span> <span class="n">resortes</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">resorte</span><span class="p">,</span><span class="s1">&#39;Kr&#39;</span><span class="p">]</span>
+
+<span class="sd">&#39;&#39;&#39; Mensaje del notebook - No hay necesidad de copiar&#39;&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Matriz de rigidez de la estructura&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">matriz_rigidez_estructura</span><span class="p">))</span>
+<span class="sd">&#39;&#39;&#39; Mensaje del notebook - No hay necesidad de copiar&#39;&#39;&#39;</span>
+
+<span class="c1"># Submatrices k</span>
+<span class="n">submatrices_k</span> <span class="o">=</span> <span class="n">division_matrices</span><span class="p">(</span><span class="n">GdLs</span><span class="o">=</span><span class="n">informacion_general</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">GdLr</span><span class="o">=</span><span class="n">informacion_general</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">matriz_rigidez_estructura</span><span class="o">=</span><span class="n">matriz_rigidez_estructura</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39; Mensaje del notebook - No hay necesidad de copiar&#39;&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Matriz kll&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">submatrices_k</span><span class="p">[</span><span class="s1">&#39;kll&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Matriz klr&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">submatrices_k</span><span class="p">[</span><span class="s1">&#39;klr&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Matriz krr&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">submatrices_k</span><span class="p">[</span><span class="s1">&#39;krr&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Matriz krl&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">submatrices_k</span><span class="p">[</span><span class="s1">&#39;krl&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz de rigidez de la estructura
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>604266.6666667</td>
+      <td>0.0000000</td>
+      <td>6400</td>
+      <td>-600000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6400</td>
+      <td>0</td>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0000000</td>
+      <td>800450</td>
+      <td>1800.0000000</td>
+      <td>0</td>
+      <td>-450</td>
+      <td>0</td>
+      <td>-0.0000000</td>
+      <td>0</td>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6400</td>
+      <td>1800.0000000</td>
+      <td>20000</td>
+      <td>0</td>
+      <td>-1800</td>
+      <td>0</td>
+      <td>6400</td>
+      <td>0</td>
+      <td>-6400</td>
+      <td>0.0000000</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-600000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>629866.6666667</td>
+      <td>19200.0000000</td>
+      <td>6400</td>
+      <td>0</td>
+      <td>6400</td>
+      <td>-25600.0000000</td>
+      <td>-19200</td>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>-450</td>
+      <td>-1800</td>
+      <td>19200.0000000</td>
+      <td>814850</td>
+      <td>-0.0000000</td>
+      <td>0</td>
+      <td>-0.0000000</td>
+      <td>-19200</td>
+      <td>-14400</td>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6400</td>
+      <td>-0.0000000</td>
+      <td>12800</td>
+      <td>0</td>
+      <td>6400</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-6400</td>
+      <td>0.0000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6400</td>
+      <td>-0.0000000</td>
+      <td>6400</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>12800</td>
+      <td>0</td>
+      <td>-6400</td>
+      <td>0.0000000</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6400</td>
+      <td>-0.0000000</td>
+      <td>6400</td>
+      <td>0</td>
+      <td>12800</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-6400</td>
+      <td>0.0000000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+      <td>-6400</td>
+      <td>-25600.0000000</td>
+      <td>-19200</td>
+      <td>0</td>
+      <td>-6400</td>
+      <td>0</td>
+      <td>29866.6666667</td>
+      <td>19200.0000000</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+      <td>0.0000000</td>
+      <td>-19200</td>
+      <td>-14400</td>
+      <td>0</td>
+      <td>0.0000000</td>
+      <td>0</td>
+      <td>19200.0000000</td>
+      <td>814400</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+      <td>-6400</td>
+      <td>0</td>
+      <td>-6400</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4266.6666667</td>
+      <td>0.0000000</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+      <td>0.0000000</td>
+      <td>0</td>
+      <td>0.0000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0000000</td>
+      <td>800000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz kll
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>604266.6666667</td>
+      <td>0.0000000</td>
+      <td>6400</td>
+      <td>-600000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6400</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0000000</td>
+      <td>800450</td>
+      <td>1800.0000000</td>
+      <td>0</td>
+      <td>-450</td>
+      <td>0</td>
+      <td>-0.0000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6400</td>
+      <td>1800.0000000</td>
+      <td>20000</td>
+      <td>0</td>
+      <td>-1800</td>
+      <td>0</td>
+      <td>6400</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-600000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>629866.6666667</td>
+      <td>19200.0000000</td>
+      <td>6400</td>
+      <td>0</td>
+      <td>6400</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>-450</td>
+      <td>-1800</td>
+      <td>19200.0000000</td>
+      <td>814850</td>
+      <td>-0.0000000</td>
+      <td>0</td>
+      <td>-0.0000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6400</td>
+      <td>-0.0000000</td>
+      <td>12800</td>
+      <td>0</td>
+      <td>6400</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6400</td>
+      <td>-0.0000000</td>
+      <td>6400</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>12800</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6400</td>
+      <td>-0.0000000</td>
+      <td>6400</td>
+      <td>0</td>
+      <td>12800</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz klr
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-6400</td>
+      <td>0.0000000</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-25600.0000000</td>
+      <td>-19200</td>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-19200</td>
+      <td>-14400</td>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>-6400</td>
+      <td>0.0000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-6400</td>
+      <td>0.0000000</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>0</td>
+      <td>-6400</td>
+      <td>0.0000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz krr
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>29866.6666667</td>
+      <td>19200.0000000</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>19200.0000000</td>
+      <td>814400</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>4266.6666667</td>
+      <td>0.0000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0000000</td>
+      <td>800000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz krl
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+      <td>-6400</td>
+      <td>-25600.0000000</td>
+      <td>-19200</td>
+      <td>0</td>
+      <td>-6400</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+      <td>0.0000000</td>
+      <td>-19200</td>
+      <td>-14400</td>
+      <td>0</td>
+      <td>0.0000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-4266.6666667</td>
+      <td>-0.0000000</td>
+      <td>-6400</td>
+      <td>0</td>
+      <td>-6400</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-0.0000000</td>
+      <td>-800000</td>
+      <td>0.0000000</td>
+      <td>0</td>
+      <td>0.0000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="paso-4-vector-de-fuerzas">
+<h2>Paso 4. Vector de fuerzas<a class="headerlink" href="#paso-4-vector-de-fuerzas" title="Link to this heading">#</a></h2>
+<p>Importante tener en cuenta el tipo de carga</p>
+<ul class="simple">
+<li><p>Cargas sobre elementos</p></li>
+</ul>
+<p><img alt="po1" src="../_images/po_1.png" /></p>
+<ul class="simple">
+<li><p>Nuevo enfoque</p></li>
+</ul>
+<p><img alt="po2" src="../_images/po_2.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargas elementos</span>
+<span class="n">cargas</span> <span class="o">=</span> <span class="n">informacion_estructural</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span>
+<span class="n">Pos_elementos</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Po&#39;</span><span class="p">:{},</span><span class="s1">&#39;po&#39;</span><span class="p">:{}}</span> 
+
+<span class="n">Fo_estructura</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">numero_nodos</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">elemento</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cargas</span><span class="p">)):</span>
+    <span class="c1"># Extrae todos la información del elemento</span>
+    <span class="n">informacion_elemento</span> <span class="o">=</span> <span class="n">elementos</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">elemento</span><span class="p">,:]</span>
+    <span class="n">grados_libertad_elemento</span> <span class="o">=</span> <span class="n">GdLs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">elemento</span><span class="p">,:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">grados_libertad_elemento</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">grados_libertad_elemento</span> <span class="p">]</span>
+
+    <span class="n">matriz_lambda_elemento</span> <span class="o">=</span> <span class="n">matrices_lambda</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span> 
+
+    <span class="n">cargas_elemento_temporal</span> <span class="o">=</span> <span class="n">cargas</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">elemento</span><span class="p">,:]</span>
+    <span class="n">tipo_elemento</span> <span class="o">=</span> <span class="n">elementos</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">elemento</span><span class="p">,</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+
+    <span class="c1"># ---------------------------------------------------------------</span>
+    <span class="c1"># FUNCIÓN</span>
+    <span class="c1"># - Carga distribuida</span>
+    <span class="c1"># - Cargas puntuales</span>
+    <span class="c1"># - Temperatura</span>
+    <span class="c1"># - Preesfuerzo</span>
+    <span class="n">Pos_elementos</span><span class="p">[</span><span class="s1">&#39;po&#39;</span><span class="p">][</span><span class="n">elemento</span><span class="p">]</span> <span class="o">=</span> <span class="n">vector_po</span><span class="p">(</span><span class="n">cargas</span><span class="o">=</span><span class="n">cargas_elemento_temporal</span><span class="p">,</span><span class="n">elementoTemporal</span><span class="o">=</span><span class="n">informacion_elemento</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Elemento </span><span class="si">{</span><span class="n">elemento</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Pos_elementos</span><span class="p">[</span><span class="s1">&#39;po&#39;</span><span class="p">][</span><span class="n">elemento</span><span class="p">]))</span>
+
+
+    <span class="c1"># Transformación a coordenadas globales</span>
+    <span class="n">Pos_elementos</span><span class="p">[</span><span class="s1">&#39;Po&#39;</span><span class="p">][</span><span class="n">elemento</span><span class="p">]</span> <span class="o">=</span> <span class="n">vector_Po</span><span class="p">(</span><span class="n">m_lambda</span><span class="o">=</span><span class="n">matriz_lambda_elemento</span><span class="p">,</span><span class="n">po</span><span class="o">=</span><span class="n">Pos_elementos</span><span class="p">[</span><span class="s1">&#39;po&#39;</span><span class="p">][</span><span class="n">elemento</span><span class="p">])</span>
+
+    <span class="n">Fo_estructura</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">grados_libertad_elemento</span><span class="p">),:]</span> <span class="o">+=</span> <span class="n">Pos_elementos</span><span class="p">[</span><span class="s1">&#39;Po&#39;</span><span class="p">][</span><span class="n">elemento</span><span class="p">]</span>
+
+<span class="c1"># ***********************************************************</span>
+<span class="c1"># Nodos</span>
+<span class="c1"># ***********************************************************  </span>
+
+<span class="n">fuerzas_nodales</span> <span class="o">=</span> <span class="n">informacion_estructural</span><span class="p">[</span><span class="s1">&#39;Fn&#39;</span><span class="p">]</span>
+<span class="n">Fn_estructura</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">numero_nodos</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fuerzas_nodales</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">nodo</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fuerzas_nodales</span><span class="p">)):</span>
+        <span class="n">Fn_estructura</span><span class="p">[</span><span class="n">fuerzas_nodales</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nodo</span><span class="p">,</span><span class="s1">&#39;GdL&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">fuerzas_nodales</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nodo</span><span class="p">,</span><span class="s1">&#39;Fn&#39;</span><span class="p">]</span> 
+
+<span class="c1"># Grados de libertad libres</span>
+<span class="n">GdLs</span><span class="o">=</span><span class="n">informacion_general</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="n">F_estructura</span> <span class="o">=</span> <span class="n">Fn_estructura</span> <span class="o">-</span> <span class="n">Fo_estructura</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vector Fr&#39;</span><span class="p">)</span>
+<span class="n">R_estructura</span> <span class="o">=</span> <span class="n">F_estructura</span><span class="p">[</span><span class="n">GdLs</span><span class="p">:,:]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">R_estructura</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vector Fl&#39;</span><span class="p">)</span>
+<span class="n">F_estructura</span> <span class="o">=</span> <span class="n">F_estructura</span><span class="p">[:</span><span class="n">GdLs</span><span class="p">,:]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">F_estructura</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elemento 0
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elemento 1
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elemento 2
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>150</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>120</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elemento 3
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vector Fr
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vector Fl
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-150</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-120</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>700</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-90</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="paso-5-vector-de-desplazamientos">
+<h2>Paso 5. Vector de desplazamientos<a class="headerlink" href="#paso-5-vector-de-desplazamientos" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vector Ur. Con esta función &quot;.values.reshape(-1,1)&quot; estoy transformando el dataframe a un vector de numpy con una columna</span>
+<span class="n">Ur</span> <span class="o">=</span> <span class="n">informacion_estructural</span><span class="p">[</span><span class="s1">&#39;Ur&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Inversa Kll</span>
+<span class="n">inversa_kll</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">submatrices_k</span><span class="p">[</span><span class="s1">&#39;kll&#39;</span><span class="p">])</span>
+
+<span class="c1"># Cálculo de Ul</span>
+<span class="n">Ul</span> <span class="o">=</span> <span class="n">inversa_kll</span><span class="o">@</span><span class="p">(</span><span class="n">F_estructura</span> <span class="o">-</span> <span class="n">submatrices_k</span><span class="p">[</span><span class="s1">&#39;klr&#39;</span><span class="p">]</span><span class="nd">@Ur</span><span class="p">)</span>
+
+<span class="c1"># Formación del vector U completo (incluye Ull y Ur)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">Ul</span><span class="p">,</span> <span class="n">Ur</span><span class="p">))</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">U</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0283604</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.0001595</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.0126141</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0283435</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.0008063</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-0.0094478</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-0.0078731</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>-0.0094478</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="paso-6-vector-de-fuerzas-internas-de-los-elementos">
+<h2>Paso 6. Vector de fuerzas internas de los elementos<a class="headerlink" href="#paso-6-vector-de-fuerzas-internas-de-los-elementos" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_interna</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">p_interna</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Grados de libertad elemento de los elementos</span>
+<span class="n">GdLs</span> <span class="o">=</span> <span class="n">informacion_estructural</span><span class="p">[</span><span class="s1">&#39;GDL&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">elemento</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cargas</span><span class="p">)):</span>
+    <span class="c1"># Extrae todos la información del elemento</span>
+    <span class="c1"># Matriz de rigides</span>
+    <span class="n">Ke_temporal</span> <span class="o">=</span> <span class="n">Ke_matrices</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span>
+    <span class="c1"># Grados de libertad</span>
+    <span class="n">grados_libertad_elemento</span> <span class="o">=</span> <span class="n">GdLs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">elemento</span><span class="p">,:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">grados_libertad_elemento</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">grados_libertad_elemento</span><span class="p">]</span>
+    
+    <span class="c1"># Desplazamientos por elemento</span>
+    <span class="n">Ue</span> <span class="o">=</span> <span class="n">U</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">grados_libertad_elemento</span><span class="p">),:]</span>
+
+    <span class="c1"># Matriz de transformación</span>
+    <span class="n">matriz_lambda_elemento</span> <span class="o">=</span> <span class="n">matrices_lambda</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span> 
+
+    <span class="c1"># P interna en coordenadas globales</span>
+    <span class="n">P_interna</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ke_temporal</span> <span class="o">@</span> <span class="n">Ue</span> <span class="o">+</span> <span class="n">Pos_elementos</span><span class="p">[</span><span class="s1">&#39;Po&#39;</span><span class="p">][</span><span class="n">elemento</span><span class="p">]</span>
+    <span class="n">P_interna</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span> <span class="o">=</span> <span class="n">P_interna</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># p interna en coordenadas locales</span>
+    <span class="n">p_interna</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span> <span class="o">=</span> <span class="n">matriz_lambda_elemento</span><span class="nd">@P_interna</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span>
+    <span class="n">p_interna</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_interna</span><span class="p">[</span><span class="n">elemento</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Elemento - </span><span class="si">{</span><span class="n">elemento</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">p_interna</span><span class="p">[</span><span class="n">elemento</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elemento - 0
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>127.5856106</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-10.1141475</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-127.5856106</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10.1141475</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-30.3424425</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elemento - 1
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>645.0000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.0000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.0000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-645.0000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-0.0000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elemento - 2
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10.1141475</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>127.5856106</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>30.3424425</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-10.1141475</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>112.4143894</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elemento - 3
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-887.6426844</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>887.6426844</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.0000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="paso-7-reacciones">
+<h2>Paso 7. Reacciones<a class="headerlink" href="#paso-7-reacciones" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reacciones</span>
+<span class="n">Rn</span> <span class="o">=</span> <span class="n">submatrices_k</span><span class="p">[</span><span class="s1">&#39;krl&#39;</span><span class="p">]</span><span class="nd">@Ul</span> <span class="o">+</span> <span class="n">submatrices_k</span><span class="p">[</span><span class="s1">&#39;krr&#39;</span><span class="p">]</span><span class="nd">@Ur</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reacciones&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Rn</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reacciones
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-700.0000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-405.0000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>645.0000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="verificacion-sap2000">
+<h1>Verificación SAP2000<a class="headerlink" href="#verificacion-sap2000" title="Link to this heading">#</a></h1>
+<p>La estructura, anteriormente calculada, se modela en SAP2000 considerando las propiedades de la sección y las cargas actuantes:</p>
+<p><img alt="Estr_1" src="../_images/Estr_1.png" />
+<img alt="Estr_2" src="../_images/Estr_2.png" /></p>
+<p>Nota: importante considerar un número grande para el área de cortante.</p>
+<section id="reacciones">
+<h2>Reacciones<a class="headerlink" href="#reacciones" title="Link to this heading">#</a></h2>
+<p><img alt="Reacciones" src="../_images/Reac.png" /></p>
+</section>
+<section id="fuerzas-internas-elemento-1">
+<h2>Fuerzas internas elemento 1<a class="headerlink" href="#fuerzas-internas-elemento-1" title="Link to this heading">#</a></h2>
+<p><img alt="E_1_F_1" src="../_images/E_1_Fuerz_1.png" />
+<img alt="E_1_F_2" src="../_images/E_1_Fuerz_2.png" /></p>
+</section>
+<section id="fuerzas-internas-elemento-2">
+<h2>Fuerzas internas elemento 2<a class="headerlink" href="#fuerzas-internas-elemento-2" title="Link to this heading">#</a></h2>
+<p><img alt="E2_F1" src="../_images/E_2_Fuerz_1.png" /></p>
+</section>
+<section id="fuerzas-internas-elemento-3">
+<h2>Fuerzas internas elemento 3<a class="headerlink" href="#fuerzas-internas-elemento-3" title="Link to this heading">#</a></h2>
+<p><img alt="E3_F1" src="../_images/E_3_Fuerz_1.png" />
+<img alt="E3_F2" src="../_images/E_3_Fuerz_2.png" /></p>
+</section>
+<section id="fuerzas-internas-elemento-4">
+<h2>Fuerzas internas elemento 4<a class="headerlink" href="#fuerzas-internas-elemento-4" title="Link to this heading">#</a></h2>
+<p><img alt="E4_F3" src="../_images/E_4_Fuerz_1.png" /></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./modulos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../notebooks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Content with notebooks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Módulo 1. Análisis Estático Lineal</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-de-entrada">Parámetros de entrada</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#procedimiento">Procedimiento</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-librerias">Importación de librerias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-lectura-de-informacion-inicial">Paso 1. Lectura de información inicial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-matriz-de-rigidez-de-los-elementos">Paso 2. Matriz de rigidez de los elementos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-matriz-de-rigidez-de-la-estructura">Paso 3. Matriz de rigidez de la estructura</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-vector-de-fuerzas">Paso 4. Vector de fuerzas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-5-vector-de-desplazamientos">Paso 5. Vector de desplazamientos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-6-vector-de-fuerzas-internas-de-los-elementos">Paso 6. Vector de fuerzas internas de los elementos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-7-reacciones">Paso 7. Reacciones</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#verificacion-sap2000">Verificación SAP2000</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reacciones">Reacciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuerzas-internas-elemento-1">Fuerzas internas elemento 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuerzas-internas-elemento-2">Fuerzas internas elemento 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuerzas-internas-elemento-3">Fuerzas internas elemento 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuerzas-internas-elemento-4">Fuerzas internas elemento 4</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Diego Alejandro Noriega Barbosa, MSc
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
